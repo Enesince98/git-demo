@@ -14,7 +14,9 @@ import Alert from "@mui/material/Alert"
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "../api/axios";
-const LOGIN_URL = "/api/Auth/login";
+import Header from "./Header";
+//const LOGIN_URL = "/api/Auth/login";
+const LOGIN_URL = "/auth";
 function Copyright(props) {
     return (
       <Typography
@@ -59,7 +61,7 @@ const Login = () => {
     try {
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ username:user, password:pwd }),
+        JSON.stringify({ user, pwd }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -89,6 +91,7 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={theme}>
+    <Header/>
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />
       <Grid
