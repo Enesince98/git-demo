@@ -9,6 +9,7 @@ import ContentTypeBuilder from "./components/ContentTypeBuilder";
 import ContentTypeManager from "./components/ContentTypeManager";
 import Contents from "./components/Contents";
 import UserManager from "./components/UserManager";
+import Table from "./components/Table";
 
 /*const ROLES = {
   User: 2001,
@@ -23,40 +24,17 @@ function App() {
         {/* public routes */}
         <Route path="login" element={<Login />} />
         <Route path="unauthorized" element={<Unauthorized />} />
+        <Route path="table" element={<Table />} />
 
         {/* we want to protect these routes */}
         {/*allowedRoles={[ROLES.User]}*/}
         <Route element={<RequireAuth  />}>
-          <Route path="/home" element={<Home />} />
-        </Route>
-        {/*allowedRoles={[ROLES.Editor, ROLES.Admin]}*/}
-        <Route
-          element={<RequireAuth />}
-        >
+          <Route path="/" element={<Home />} />
           <Route path="content-type-builder" element={<ContentTypeBuilder />} />
-        </Route>
-        {/*allowedRoles={[ROLES.Editor, ROLES.Admin]}*/}
-        <Route
-          element={<RequireAuth />}
-        >
-          <Route
-            path="content-type-manager/*"
-            element={<ContentTypeManager />}
-          />
-        </Route>
-        {/*allowedRoles={[ROLES.Editor, ROLES.Admin]}*/}
-        <Route
-          element={<RequireAuth />}
-        >
+          <Route path="content-type-manager/*" element={<ContentTypeManager />}/>
           <Route path="contents" element={<Contents />} />
-        </Route>
-        {/*allowedRoles={[ROLES.Editor, ROLES.Admin]}*/}
-        <Route
-          element={<RequireAuth />}
-        >
           <Route path="user-manager" element={<UserManager />} />
         </Route>
-        {/*allowedRoles={[ROLES.Editor, ROLES.Admin]}*/}
 
         {/* catch all */}
         <Route path="*" element={<Missing />} />
