@@ -22,7 +22,6 @@ const Table = (props) => {
     readData();
   }, [url]);
   function nextData() {
-
   }
   function prevData() {
     if (page > 1) setPage((prev) => prev - 1);
@@ -36,7 +35,6 @@ const Table = (props) => {
       }
     }
   }
-
   let d = data[5];
 
   let navigate = useNavigate(); 
@@ -74,7 +72,6 @@ const Table = (props) => {
                   </div>
                 </td>
               </tr>
-              
             ))}
           </tbody>
         </table>
