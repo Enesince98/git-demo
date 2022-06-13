@@ -1,8 +1,11 @@
 import React from 'react'
-
 const Search = () => {
   return (
-    <div>Search</div>
+    <div><form>
+    <label for="search">Search</label>
+    <input id="search" type="search" pattern=".*\S.*" required/>
+    <span class="caret"></span>
+  </form></div>
   )
 }
 

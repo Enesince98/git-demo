@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="content-type-builder" element={<ContentTypeBuilder />} />
           <Route path="content-type-manager/*" element={<ContentTypeManager />}/>
-          <Route path="contents" element={<Contents />} />
+          <Route path="contents/*" element={<Contents />} />
           <Route path="user-manager" element={<UserManager />} />
         </Route>
 

@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import axios from "../api/axios";
 import "./Table.css";
+import {Link, useNavigate} from 'react-router-dom'
 let data;
 const Table = (props) => {
   const [page, setPage] = useState(1);
@@ -12,7 +13,6 @@ const Table = (props) => {
     setUrl(props.url + "?page=" + page + "&limit=10");
   }, [page]);
   useEffect(() => {
-    console.log(url);
     const readData = async () => {
       await axios.get(url).then(function (response) {
         setData(response.data.data);
@@ -21,28 +21,7 @@ const Table = (props) => {
     };
     readData();
   }, [url]);
-  //ilk tıklandığında ileri gitmiyor
-  // 10 a bölünmeyen veri olduğunda son sayfayı yüklemiyor.
   function nextData() {
-    if (page < count / 10) setPage((prev) => prev + 1);
-    // console.log(url)
-    // console.log(page)
-
-    // if (count % 10 === 0) {
-    //   if (page < count / 10) {
-    //     setPage(prev => prev +1);
-    //     setUrl(props.url + "?page=" + page + "&limit=10");
-    //     console.log(page);
-    //     console.log(url);
-    //   }
-    // } else {
-    //   if (page <= count / 10) {
-    //     setPage(prev => prev + 1);
-    //     setUrl(props.url + "?page=" + page + "&limit=10");
-    //     console.log(page);
-    //     console.log(url);
-    //   }
-    // }
   }
   function prevData() {
     if (page > 1) setPage((prev) => prev - 1);
@@ -56,12 +35,14 @@ const Table = (props) => {
       }
     }
   }
-
-  //console.log(col);
   let d = data[5];
-  //data.map((value)=>(Object.keys(value).map((v)=>(console.log(v.value)))))
-  //Object.keys(d).map((v)=>(console.log(v)))
-  //console.log(Object.values(data[5]));
+
+  let navigate = useNavigate(); 
+  const routeChange = (id) =>{
+    if (props.isParent){ 
+    let path = `/contents/${id}`;
+    navigate(path);
+  }}
   return (
     <div>
       <div className="tbl-header">
@@ -69,8 +50,8 @@ const Table = (props) => {
           <thead>
             <tr>
               {col.map((value) => (
-                <th>{value}</th>
-              ))}
+                <th style={{textAlign:"center"}}>{value}</th>
+              ))}<th>Actions</th>
             </tr>
           </thead>
         </table>
@@ -79,10 +60,17 @@ const Table = (props) => {
         <table cellPadding="0" cellSpacing="0" border="0">
           <tbody>
             {data.map((value) => (
-              <tr>
+                 <tr onClick={()=> routeChange(value.id)}>
                 {Object.values(value).map((v) => (
-                  <td>{v}</td>
+                  <td style={{textAlign:"center"}}>{v}</td>
                 ))}
+                <td>
+                  <div className="button-container">
+                  <button> <a href="#">Add</a></button>
+                  <button> <a href="#">Edit</a></button>
+                  <button> <a href="#">Delete</a></button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -92,10 +80,10 @@ const Table = (props) => {
         <div class="pagination p7">
           <ul>
             <a className = {(page > 1 ? "is-active":"disabled")} onClick={prevData}>
-              <li>Previous</li>
+              <li className="prev">Previous</li>
             </a>
             <a className = {(page < count / 10 ? "is-active":"disabled")} onClick={nextData}>
-              <li>Next</li>
+              <li className="next">Next</li>
             </a>
           </ul>
         </div>

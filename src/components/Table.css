@@ -83,8 +83,9 @@
 
 
   /*PAGINATION CSS*/
-  a{
+  button a{
     text-decoration: none;
+    color:#fff;
   }
   
   li, a{
@@ -123,9 +124,32 @@
   }
   .p7 a:hover {
     cursor: pointer;
-    width: 10%;
+    font-size: 2rem;
   }
   .disabled{
     pointer-events: none;
-    
   }
+.prev, .next {
+  transition: all .5s
+}
+.prev:hover , .next:hover {
+  font-size: 1.2rem;
+}
+.button-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.button-container button {
+  padding:.5rem;
+  background-color: transparent;
+  border-radius: 7px;
+  width: 25%;
+  border:1px solid #fff;
+  transition: all .5s;
+}
+.button-container button:hover {
+  background-color: #25c481;
+  font-weight: bold;
+  width: 30%;
+  cursor: pointer;
+}

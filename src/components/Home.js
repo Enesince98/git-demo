@@ -11,6 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/Inbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
+import "../App.css"
 const Home = () => {
   const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
+    <Box sx={{ width: "100%" }}>
       <Header />
       <h1>Home</h1>
       <p>You are logged in!</p>
@@ -39,12 +40,6 @@ const Home = () => {
             <DraftsIcon />
           </ListItemIcon>
           <Link to="/user-manager">User Manager</Link>
-        </ListItemButton>
-        <ListItemButton>
-          <ListItemIcon>
-            <DraftsIcon />
-          </ListItemIcon>
-          <Link to="/contents">Contents</Link>
         </ListItemButton>
         <ListItemButton>
           <ListItemIcon>
@@ -83,11 +78,8 @@ const Home = () => {
           <Link to="/users/new">Add User</Link>
         </ListItemButton>
       </List>
-
-
-      <Link to="/users">Users</Link>
       <div className="flexGrow">
-        <button onClick={logout}>Sign Out</button>
+        <button className="signout" onClick={logout}>Sign Out</button>
       </div>
     </Box>
   );
