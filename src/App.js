@@ -10,7 +10,6 @@ import ContentTypeManager from "./components/ContentTypeManager";
 import Contents from "./components/Contents";
 import UserManager from "./components/UserManager";
 import Table from "./components/Table";
-
 /*const ROLES = {
   User: 2001,
   Editor: 1984,

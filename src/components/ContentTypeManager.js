@@ -5,7 +5,7 @@ const ContentTypeManager = () => {
   return (
     <div>
       <Search />
-      <Table url = 'https://62a492ef47e6e40063951ec5.mockapi.io/api/contentTypes' isParent = {true}/>
+      <Table url = 'https://62a492ef47e6e40063951ec5.mockapi.io/api/contentTypes' isParent = {true} whoseParent = "contents"/>
       </div>
   )
 }

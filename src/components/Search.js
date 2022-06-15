@@ -2,9 +2,10 @@ import React from 'react'
 const Search = () => {
   return (
     <div><form>
-    <label for="search">Search</label>
+    <label htmlFor="search">Search</label>
     <input id="search" type="search" pattern=".*\S.*" required/>
-    <span class="caret"></span>
+    <span className="caret"></span>
+
   </form></div>
   )
 }
