@@ -73,7 +73,6 @@ const Table = (props) => {
                   </div>
                 </td>
               </tr>
-
             ))}
           </tbody>
         </table>

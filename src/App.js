@@ -24,6 +24,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="unauthorized" element={<Unauthorized />} />
         <Route path="table" element={<Table />} />
+
         {/* we want to protect these routes */}
         {/*allowedRoles={[ROLES.User]}*/}
         <Route element={<RequireAuth  />}>
